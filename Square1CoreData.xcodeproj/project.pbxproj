@@ -8,8 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D93730A42007D3E700BA4CA8 /* Square1CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D937309A2007D3E600BA4CA8 /* Square1CoreData.framework */; };
-		D93730A92007D3E700BA4CA8 /* Square1CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93730A82007D3E700BA4CA8 /* Square1CoreDataTests.swift */; };
 		D93730AB2007D3E700BA4CA8 /* Square1CoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = D937309D2007D3E600BA4CA8 /* Square1CoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D944F0AE2009043F001FF5ED /* SQ1CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0AD2009043F001FF5ED /* SQ1CoreDataManager.swift */; };
+		D944F0B020090584001FF5ED /* NSManagedObjectContext+Square1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0AF20090584001FF5ED /* NSManagedObjectContext+Square1.swift */; };
+		D944F0B4200906AB001FF5ED /* ManagedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0B3200906AB001FF5ED /* ManagedTests.swift */; };
+		D944F0B7200906F0001FF5ED /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0B6200906F0001FF5ED /* Managed.swift */; };
+		D944F0BD2009077A001FF5ED /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0B92009077A001FF5ED /* Person.swift */; };
+		D944F0BE2009077A001FF5ED /* TestCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0BA2009077A001FF5ED /* TestCoreDataManager.swift */; };
+		D944F0BF2009077A001FF5ED /* Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D944F0BB2009077A001FF5ED /* Test.xcdatamodeld */; };
+		D97318DD200DFD6B00A36F90 /* SQ1FRCTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97318DC200DFD6B00A36F90 /* SQ1FRCTableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +34,15 @@
 		D937309D2007D3E600BA4CA8 /* Square1CoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Square1CoreData.h; sourceTree = "<group>"; };
 		D937309E2007D3E600BA4CA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D93730A32007D3E700BA4CA8 /* Square1CoreDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Square1CoreDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D93730A82007D3E700BA4CA8 /* Square1CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square1CoreDataTests.swift; sourceTree = "<group>"; };
 		D93730AA2007D3E700BA4CA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D944F0AD2009043F001FF5ED /* SQ1CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQ1CoreDataManager.swift; sourceTree = "<group>"; };
+		D944F0AF20090584001FF5ED /* NSManagedObjectContext+Square1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Square1.swift"; sourceTree = "<group>"; };
+		D944F0B3200906AB001FF5ED /* ManagedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedTests.swift; sourceTree = "<group>"; };
+		D944F0B6200906F0001FF5ED /* Managed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
+		D944F0B92009077A001FF5ED /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		D944F0BA2009077A001FF5ED /* TestCoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCoreDataManager.swift; sourceTree = "<group>"; };
+		D944F0BC2009077A001FF5ED /* Test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Test.xcdatamodel; sourceTree = "<group>"; };
+		D97318DC200DFD6B00A36F90 /* SQ1FRCTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQ1FRCTableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +67,8 @@
 		D93730902007D3E600BA4CA8 = {
 			isa = PBXGroup;
 			children = (
-				D937309C2007D3E600BA4CA8 /* Square1CoreData */,
-				D93730A72007D3E700BA4CA8 /* Square1CoreDataTests */,
+				D937309C2007D3E600BA4CA8 /* Source */,
+				D93730A72007D3E700BA4CA8 /* Tests */,
 				D937309B2007D3E600BA4CA8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,22 +82,61 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D937309C2007D3E600BA4CA8 /* Square1CoreData */ = {
+		D937309C2007D3E600BA4CA8 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D944F0B5200906D4001FF5ED /* Protocols */,
+				D944F0B22009065B001FF5ED /* Helpers */,
+				D944F0B120090652001FF5ED /* Extensions */,
 				D937309D2007D3E600BA4CA8 /* Square1CoreData.h */,
 				D937309E2007D3E600BA4CA8 /* Info.plist */,
 			);
-			path = Square1CoreData;
+			path = Source;
 			sourceTree = "<group>";
 		};
-		D93730A72007D3E700BA4CA8 /* Square1CoreDataTests */ = {
+		D93730A72007D3E700BA4CA8 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D93730A82007D3E700BA4CA8 /* Square1CoreDataTests.swift */,
+				D944F0B82009077A001FF5ED /* TestModel */,
+				D944F0B3200906AB001FF5ED /* ManagedTests.swift */,
 				D93730AA2007D3E700BA4CA8 /* Info.plist */,
 			);
-			path = Square1CoreDataTests;
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		D944F0B120090652001FF5ED /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D944F0AF20090584001FF5ED /* NSManagedObjectContext+Square1.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D944F0B22009065B001FF5ED /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D944F0AD2009043F001FF5ED /* SQ1CoreDataManager.swift */,
+				D97318DC200DFD6B00A36F90 /* SQ1FRCTableViewDataSource.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D944F0B5200906D4001FF5ED /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D944F0B6200906F0001FF5ED /* Managed.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D944F0B82009077A001FF5ED /* TestModel */ = {
+			isa = PBXGroup;
+			children = (
+				D944F0B92009077A001FF5ED /* Person.swift */,
+				D944F0BA2009077A001FF5ED /* TestCoreDataManager.swift */,
+				D944F0BB2009077A001FF5ED /* Test.xcdatamodeld */,
+			);
+			path = TestModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,10 +201,12 @@
 				TargetAttributes = {
 					D93730992007D3E600BA4CA8 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					D93730A22007D3E700BA4CA8 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -196,6 +251,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D944F0B020090584001FF5ED /* NSManagedObjectContext+Square1.swift in Sources */,
+				D97318DD200DFD6B00A36F90 /* SQ1FRCTableViewDataSource.swift in Sources */,
+				D944F0B7200906F0001FF5ED /* Managed.swift in Sources */,
+				D944F0AE2009043F001FF5ED /* SQ1CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D93730A92007D3E700BA4CA8 /* Square1CoreDataTests.swift in Sources */,
+				D944F0BD2009077A001FF5ED /* Person.swift in Sources */,
+				D944F0BF2009077A001FF5ED /* Test.xcdatamodeld in Sources */,
+				D944F0BE2009077A001FF5ED /* TestCoreDataManager.swift in Sources */,
+				D944F0B4200906AB001FF5ED /* ManagedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +329,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -321,7 +383,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -334,6 +396,7 @@
 		D93730AF2007D3E700BA4CA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -341,12 +404,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Square1CoreData/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.square1.Square1CoreData;
+				PRODUCT_BUNDLE_IDENTIFIER = io.square1.ios.coredata;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,6 +419,7 @@
 		D93730B02007D3E700BA4CA8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -362,10 +427,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Square1CoreData/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.square1.Square1CoreData;
+				PRODUCT_BUNDLE_IDENTIFIER = io.square1.ios.coredata;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -376,12 +441,15 @@
 		D93730B22007D3E700BA4CA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2X2SE3LG2B;
-				INFOPLIST_FILE = Square1CoreDataTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.square1.Square1CoreDataTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.square1.ios.coredata.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -390,11 +458,13 @@
 		D93730B32007D3E700BA4CA8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2X2SE3LG2B;
-				INFOPLIST_FILE = Square1CoreDataTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.square1.Square1CoreDataTests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.square1.ios.coredata.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -432,6 +502,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D944F0BB2009077A001FF5ED /* Test.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D944F0BC2009077A001FF5ED /* Test.xcdatamodel */,
+			);
+			currentVersion = D944F0BC2009077A001FF5ED /* Test.xcdatamodel */;
+			path = Test.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D93730912007D3E600BA4CA8 /* Project object */;
 }
