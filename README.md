@@ -31,7 +31,7 @@ pod 'Square1CoreData'
 5. Run ```pod install```
 6. Use this import on every file you want to use the pod
 ```swift
-import Square1Tools
+import Square1CoreData
 ```
 
 ## Running the tests
