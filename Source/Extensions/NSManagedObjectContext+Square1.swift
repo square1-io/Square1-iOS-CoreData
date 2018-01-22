@@ -39,4 +39,14 @@ public extension NSManagedObjectContext {
     }
   }
   
+  public func performChangesAndWait(block: @escaping () -> ()) {
+    performAndWait {
+      block()
+      do {
+        try save()
+      } catch {
+        rollback()
+      }
+    }
+  }
 }

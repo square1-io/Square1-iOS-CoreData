@@ -55,16 +55,19 @@ public extension Managed where Self: NSManagedObject {
     return try! context.count(for: request)
   }
   
-  static func fetch(in context: NSManagedObjectContext, configurationBlock: (NSFetchRequest<Self>) -> () = { _ in }) -> [Self] {
+  static func fetch(in context: NSManagedObjectContext,
+                    configurationBlock: ((NSFetchRequest<Self>) -> ())? = nil) -> [Self] {
     let request = NSFetchRequest<Self>(entityName: Self.entityName)
-    configurationBlock(request)
+    configurationBlock?(request)
     return try! context.fetch(request)
   }
   
-  static func findOrCreate(in context: NSManagedObjectContext, matching predicate: NSPredicate, configure: (Self) -> ()) -> Self {
+  static func findOrCreate(in context: NSManagedObjectContext,
+                           matching predicate: NSPredicate,
+                           configure: ((Self) -> ())? = nil) -> Self {
     guard let object = findOrFetch(in: context, matching: predicate) else {
       let newObject = Self.insertObject(in: context)
-      configure(newObject)
+      configure?(newObject)
       return newObject
     }
     return object
