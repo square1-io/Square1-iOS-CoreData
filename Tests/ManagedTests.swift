@@ -32,6 +32,9 @@ class ManagedTests: XCTestCase {
   override func setUp() {
     super.setUp()
     coreDataStack = TestCoreDataManager()
+    context.performChangesAndWait {
+      Person.deleteAll(in: self.context)
+    }
   }
   
   override func tearDown() {
@@ -63,7 +66,7 @@ class ManagedTests: XCTestCase {
     
     let predicate = NSPredicate(format: "name == %@", "Alex")
     XCTAssert(saved)
-    XCTAssertEqual(Person.findOrCreate(in: context, matching: predicate, configure: { _ in }), person)
+    XCTAssertEqual(Person.findOrCreate(in: context, matching: predicate), person)
     XCTAssertEqual(Person.count(in: context), 1)
   }
   
@@ -72,7 +75,7 @@ class ManagedTests: XCTestCase {
     person.name = "Alex"
     
     let predicate = NSPredicate(format: "name == %@", "Alex")
-    XCTAssertEqual(Person.findOrCreate(in: context, matching: predicate, configure: { _ in }), person)
+    XCTAssertEqual(Person.findOrCreate(in: context, matching: predicate), person)
     XCTAssertEqual(Person.count(in: context), 1)
   }
   
@@ -81,13 +84,13 @@ class ManagedTests: XCTestCase {
     person.name = "Unknown"
     
     let predicate = NSPredicate(format: "name == %@", "Alex")
-    XCTAssertNotEqual(Person.findOrCreate(in: context, matching: predicate, configure: { _ in }), person)
+    XCTAssertNotEqual(Person.findOrCreate(in: context, matching: predicate), person)
     XCTAssertEqual(Person.count(in: context), 2)
   }
   
   func testFindOrCreateCreatesNew() {
     let predicate = NSPredicate(format: "name == %@", "notexistingname")
-    _ = Person.findOrCreate(in: context, matching: predicate, configure: { _ in })
+    _ = Person.findOrCreate(in: context, matching: predicate)
     XCTAssertEqual(Person.count(in: context), 1)
   }
   

@@ -28,30 +28,30 @@ class TestCoreDataManager: SQ1CoreDataManager {
     self.init(modelName: "Test")
   }
   
-  override init(modelName: String) {
-    super.init(modelName: modelName)
-    
-    let persistentStoreDescription = NSPersistentStoreDescription()
-    persistentStoreDescription.type = NSInMemoryStoreType
-    
-    let bundle = Bundle(for: type(of: self))
-    guard let url = bundle.url(forResource: modelName, withExtension: "momd") else {
-      fatalError("Could not parse url from model name: \(modelName)")
-    }
-    
-    guard let model = NSManagedObjectModel(contentsOf: url) else {
-      fatalError("Could not find a model with model name: \(modelName)")
-    }
-    
-    let container = NSPersistentContainer(name: modelName, managedObjectModel: model)
-    container.persistentStoreDescriptions = [persistentStoreDescription]
-    container.loadPersistentStores {
-      (storeDescription, error) in
-      if let error = error {
-        fatalError (
-          "Unresolved error \(error.localizedDescription)")
-      }
-    }
-    self.storeContainer = container
-  }
+//  override init(modelName: String) {
+//    super.init(modelName: modelName)
+//    
+//    let persistentStoreDescription = NSPersistentStoreDescription()
+//    persistentStoreDescription.type = NSInMemoryStoreType
+//    
+//    let bundle = Bundle(for: type(of: self))
+//    guard let url = bundle.url(forResource: modelName, withExtension: "momd") else {
+//      fatalError("Could not parse url from model name: \(modelName)")
+//    }
+//    
+//    guard let model = NSManagedObjectModel(contentsOf: url) else {
+//      fatalError("Could not find a model with model name: \(modelName)")
+//    }
+//    
+//    let container = NSPersistentContainer(name: modelName, managedObjectModel: model)
+//    container.persistentStoreDescriptions = [persistentStoreDescription]
+//    container.loadPersistentStores {
+//      (storeDescription, error) in
+//      if let error = error {
+//        fatalError (
+//          "Unresolved error \(error.localizedDescription)")
+//      }
+//    }
+//    self.storeContainer = container
+//  }
 }
