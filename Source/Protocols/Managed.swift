@@ -28,8 +28,12 @@ public protocol Managed: class, NSFetchRequestResult {
 public extension Managed {
   static var defaultSortDescriptors: [NSSortDescriptor] { return [] }
   
+  static var fetchRequest: NSFetchRequest<Self> {
+    return NSFetchRequest<Self>(entityName: entityName)
+  }
+  
   static var sortedFetchRequest: NSFetchRequest<Self> {
-    let request = NSFetchRequest<Self>(entityName: entityName)
+    let request = fetchRequest
     request.sortDescriptors = defaultSortDescriptors
     return request
   }
@@ -50,14 +54,14 @@ public extension Managed where Self: NSManagedObject {
   }
   
   static func count(in context: NSManagedObjectContext, matching predicate: NSPredicate? = nil) -> Int {
-    let request = NSFetchRequest<Self>(entityName: entityName)
+    let request = fetchRequest
     request.predicate = predicate
     return try! context.count(for: request)
   }
   
   static func fetch(in context: NSManagedObjectContext,
                     configurationBlock: ((NSFetchRequest<Self>) -> ())? = nil) -> [Self] {
-    let request = NSFetchRequest<Self>(entityName: Self.entityName)
+    let request = fetchRequest
     configurationBlock?(request)
     return try! context.fetch(request)
   }
@@ -73,7 +77,8 @@ public extension Managed where Self: NSManagedObject {
     return object
   }
   
-  static func findOrFetch(in context: NSManagedObjectContext, matching predicate: NSPredicate) -> Self? {
+  static func findOrFetch(in context: NSManagedObjectContext,
+                          matching predicate: NSPredicate) -> Self? {
     guard let object = materializedObject(in: context, matching: predicate) else {
       return fetch(in: context) { request in
         request.predicate = predicate
@@ -84,12 +89,33 @@ public extension Managed where Self: NSManagedObject {
     return object
   }
   
-  static func materializedObject(in context: NSManagedObjectContext, matching predicate: NSPredicate) -> Self? {
+  static func findAll(in context: NSManagedObjectContext,
+                      matching predicate: NSPredicate? = nil,
+                      sortedBy descriptors: [NSSortDescriptor]? = nil) -> [Self]? {
+    return fetch(in: context) { request in
+      if let predicate = predicate {
+        request.predicate = predicate
+      }
+      request.sortDescriptors = descriptors
+      request.returnsObjectsAsFaults = false
+    }
+  }
+  
+  static func materializedObject(in context: NSManagedObjectContext,
+                                 matching predicate: NSPredicate) -> Self? {
     for object in context.registeredObjects where !object.isFault {
       guard let result = object as? Self, predicate.evaluate(with: result) else { continue }
       return result
     }
     return nil
+  }
+  
+  
+  static func deleteAll(in context: NSManagedObjectContext) {
+    let allObjects = fetch(in: context)
+    for object in allObjects {
+      context.delete(object)
+    }
   }
 }
 

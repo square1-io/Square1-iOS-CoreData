@@ -24,15 +24,11 @@ open class SQ1CoreDataManager {
   
   private var modelName: String
   
-  public var viewContext: NSManagedObjectContext {
-    return storeContainer.viewContext
-  }
-  
   public init(modelName: String) {
     self.modelName = modelName
   }
   
-  public lazy var storeContainer: NSPersistentContainer = {
+  private lazy var storeContainer: NSPersistentContainer = {
     let modelURL = Bundle(for: type(of: self)).url(forResource: modelName, withExtension: "momd")
     let model = NSManagedObjectModel(contentsOf: modelURL!)
     
@@ -45,5 +41,13 @@ open class SQ1CoreDataManager {
       }
     }
     return container
-  }() 
+  }()
+  
+  public var viewContext: NSManagedObjectContext {
+    return storeContainer.viewContext
+  }
+  
+  public func newBackgroundContext() -> NSManagedObjectContext {
+    return storeContainer.newBackgroundContext()
+  }
 }
