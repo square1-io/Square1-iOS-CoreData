@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Square1CoreData"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "A collection of tools used in our Swift projects"
   s.description  = "A handy collection of helpers for dealing with CoreData"
   s.homepage     = "https://github.com/square1-io/Square1-iOS-CoreData"
