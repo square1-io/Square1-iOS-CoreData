@@ -89,8 +89,8 @@ public extension Managed where Self: NSManagedObject {
   
   static func materializedObject(in context: NSManagedObjectContext, matching predicate: NSPredicate) -> Self? {
     for object in context.registeredObjects where !object.isFault {
-        guard let result = object as? Self, predicate.evaluate(with: result) else { continue }
-        return result
+        guard type(of:object) == self, predicate.evaluate(with: object) else { continue }
+        return object as? Self
     }
     return nil
   }
