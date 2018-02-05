@@ -101,6 +101,14 @@ public extension Managed where Self: NSManagedObject {
       context.delete(object)
     }
   }
+  
+  static func findAll(in context: NSManagedObjectContext, sortedBy: [NSSortDescriptor]? = nil) -> [Self]? {
+    let request = fetchRequest
+    if let sortedBy = sortedBy {
+      request.sortDescriptors = sortedBy
+    }
+    return try! context.fetch(request)
+  }
 }
 
 
