@@ -39,6 +39,11 @@ import Square1CoreData
 1. Download the source project
 2. Hit ```Cmd + U``` to run the tests.
 
+## Dependecies
+
+Already handled by pod (run ```pod install```):
+
+* [Square1Tools](https://github.com/square1-io/Square1-iOS-Tools)
 
 ## Contributing
 

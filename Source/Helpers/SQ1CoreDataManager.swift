@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import CoreData
+import Square1Tools
 
 open class SQ1CoreDataManager {
   
@@ -37,7 +38,7 @@ open class SQ1CoreDataManager {
     container.loadPersistentStores {
       (storeDescription, error) in
       if let error = error as NSError? {
-        print("Unresolved error \(error), \(error.userInfo)")
+        Log("Unresolved error \(error), \(error.userInfo)")
       }
     }
     return container
@@ -49,5 +50,9 @@ open class SQ1CoreDataManager {
   
   public func newBackgroundContext() -> NSManagedObjectContext {
     return storeContainer.newBackgroundContext()
+  }
+  
+  public func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
+    storeContainer.performBackgroundTask(block)
   }
 }

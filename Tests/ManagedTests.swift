@@ -49,10 +49,10 @@ class ManagedTests: XCTestCase {
   func testInsertion() {
     let ex = expectation(description: "Finished performing changes")
     
-    context.performChanges {
+    context.perform(changes: {
       _ = Person.insertObject(in: self.context)
       ex.fulfill()
-    }
+    })
     
     waitForExpectations(timeout: 5, handler: nil)
     XCTAssertEqual(Person.count(in: self.context), 1)

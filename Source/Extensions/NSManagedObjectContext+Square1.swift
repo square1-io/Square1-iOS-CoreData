@@ -22,7 +22,7 @@ import CoreData
 
 public extension NSManagedObjectContext {
   
-  @discardableResult public func saveOrRollback(wait: Bool = false) -> Bool {
+  @discardableResult public func saveOrRollback() -> Bool {
     do {
       try save()
       return true
@@ -32,21 +32,18 @@ public extension NSManagedObjectContext {
     }
   }
   
-  public func performChanges(block: @escaping () -> ()) {
+  public func perform(changes block: @escaping () -> (), completion: ((Bool) -> ())? = nil) {
     perform {
       block()
-      self.saveOrRollback()
+      let saved = self.saveOrRollback()
+      completion?(saved)
     }
   }
   
   public func performChangesAndWait(block: @escaping () -> ()) {
     performAndWait {
       block()
-      do {
-        try save()
-      } catch {
-        rollback()
-      }
+      self.saveOrRollback()
     }
   }
 }
