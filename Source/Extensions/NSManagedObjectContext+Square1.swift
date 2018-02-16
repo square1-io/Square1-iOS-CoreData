@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import CoreData
+import Square1Tools
 
 public extension NSManagedObjectContext {
   
@@ -26,7 +27,8 @@ public extension NSManagedObjectContext {
     do {
       try save()
       return true
-    } catch {
+    } catch let error as NSError {
+      Log("Error saving context: \(error)")
       rollback()
       return false
     }

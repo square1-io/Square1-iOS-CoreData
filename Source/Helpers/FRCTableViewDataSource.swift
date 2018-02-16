@@ -27,7 +27,7 @@ protocol FRCTableViewDataSourceDelegate: class {
   func configure(_ cell: Cell, for object: Object)
 }
 
-class SQ1FRCTableViewDataSource<Delegate: FRCTableViewDataSourceDelegate>: NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class FRCTableViewDataSource<Delegate: FRCTableViewDataSourceDelegate>: NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
   
   typealias Object = Delegate.Object
   typealias Cell = Delegate.Cell

@@ -11,14 +11,14 @@
 		B2AA835ABDE547B351285604 /* Pods_Square1CoreDataTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F016D1CDF28D7AD371234882 /* Pods_Square1CoreDataTests.framework */; };
 		D93730A42007D3E700BA4CA8 /* Square1CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D937309A2007D3E600BA4CA8 /* Square1CoreData.framework */; };
 		D93730AB2007D3E700BA4CA8 /* Square1CoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = D937309D2007D3E600BA4CA8 /* Square1CoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D944F0AE2009043F001FF5ED /* SQ1CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0AD2009043F001FF5ED /* SQ1CoreDataManager.swift */; };
+		D944F0AE2009043F001FF5ED /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0AD2009043F001FF5ED /* CoreDataManager.swift */; };
 		D944F0B020090584001FF5ED /* NSManagedObjectContext+Square1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0AF20090584001FF5ED /* NSManagedObjectContext+Square1.swift */; };
 		D944F0B4200906AB001FF5ED /* ManagedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0B3200906AB001FF5ED /* ManagedTests.swift */; };
 		D944F0B7200906F0001FF5ED /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0B6200906F0001FF5ED /* Managed.swift */; };
 		D944F0BD2009077A001FF5ED /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0B92009077A001FF5ED /* Person.swift */; };
 		D944F0BE2009077A001FF5ED /* TestCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D944F0BA2009077A001FF5ED /* TestCoreDataManager.swift */; };
 		D944F0BF2009077A001FF5ED /* Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D944F0BB2009077A001FF5ED /* Test.xcdatamodeld */; };
-		D97318DD200DFD6B00A36F90 /* SQ1FRCTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97318DC200DFD6B00A36F90 /* SQ1FRCTableViewDataSource.swift */; };
+		D989BEBC203725CD00C08D12 /* FRCTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D989BEBB203725CD00C08D12 /* FRCTableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,14 +42,14 @@
 		D937309E2007D3E600BA4CA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D93730A32007D3E700BA4CA8 /* Square1CoreDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Square1CoreDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D93730AA2007D3E700BA4CA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D944F0AD2009043F001FF5ED /* SQ1CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQ1CoreDataManager.swift; sourceTree = "<group>"; };
+		D944F0AD2009043F001FF5ED /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D944F0AF20090584001FF5ED /* NSManagedObjectContext+Square1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Square1.swift"; sourceTree = "<group>"; };
 		D944F0B3200906AB001FF5ED /* ManagedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedTests.swift; sourceTree = "<group>"; };
 		D944F0B6200906F0001FF5ED /* Managed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		D944F0B92009077A001FF5ED /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		D944F0BA2009077A001FF5ED /* TestCoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCoreDataManager.swift; sourceTree = "<group>"; };
 		D944F0BC2009077A001FF5ED /* Test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Test.xcdatamodel; sourceTree = "<group>"; };
-		D97318DC200DFD6B00A36F90 /* SQ1FRCTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQ1FRCTableViewDataSource.swift; sourceTree = "<group>"; };
+		D989BEBB203725CD00C08D12 /* FRCTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRCTableViewDataSource.swift; sourceTree = "<group>"; };
 		F016D1CDF28D7AD371234882 /* Pods_Square1CoreDataTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Square1CoreDataTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,8 +147,8 @@
 		D944F0B22009065B001FF5ED /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				D944F0AD2009043F001FF5ED /* SQ1CoreDataManager.swift */,
-				D97318DC200DFD6B00A36F90 /* SQ1FRCTableViewDataSource.swift */,
+				D944F0AD2009043F001FF5ED /* CoreDataManager.swift */,
+				D989BEBB203725CD00C08D12 /* FRCTableViewDataSource.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -375,10 +375,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D989BEBC203725CD00C08D12 /* FRCTableViewDataSource.swift in Sources */,
 				D944F0B020090584001FF5ED /* NSManagedObjectContext+Square1.swift in Sources */,
-				D97318DD200DFD6B00A36F90 /* SQ1FRCTableViewDataSource.swift in Sources */,
 				D944F0B7200906F0001FF5ED /* Managed.swift in Sources */,
-				D944F0AE2009043F001FF5ED /* SQ1CoreDataManager.swift in Sources */,
+				D944F0AE2009043F001FF5ED /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

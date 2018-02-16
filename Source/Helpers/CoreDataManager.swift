@@ -21,7 +21,7 @@
 import CoreData
 import Square1Tools
 
-open class SQ1CoreDataManager {
+open class CoreDataManager {
   
   private var modelName: String
   
@@ -41,6 +41,7 @@ open class SQ1CoreDataManager {
         Log("Unresolved error \(error), \(error.userInfo)")
       }
     }
+    container.viewContext.automaticallyMergesChangesFromParent = true
     return container
   }()
   
