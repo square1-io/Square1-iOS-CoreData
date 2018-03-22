@@ -50,7 +50,9 @@ open class CoreDataManager {
   }
   
   public func newBackgroundContext() -> NSManagedObjectContext {
-    return storeContainer.newBackgroundContext()
+    let context = storeContainer.newBackgroundContext()
+    context.automaticallyMergesChangesFromParent = true
+    return context
   }
   
   public func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {

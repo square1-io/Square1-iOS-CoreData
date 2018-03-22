@@ -21,23 +21,31 @@
 import UIKit
 import CoreData
 
-protocol FRCTableViewDataSourceDelegate: class {
+public protocol FRCTableViewDataSourceDelegate: class {
   associatedtype Object: NSFetchRequestResult
   associatedtype Cell: UITableViewCell
   func configure(_ cell: Cell, for object: Object)
+  func dataSourceDidChangeContent()
 }
 
-class FRCTableViewDataSource<Delegate: FRCTableViewDataSourceDelegate>: NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+public class FRCTableViewDataSource<Delegate: FRCTableViewDataSourceDelegate>: NSObject, UITableViewDataSource, NSFetchedResultsControllerDelegate {
   
-  typealias Object = Delegate.Object
-  typealias Cell = Delegate.Cell
+  public typealias Object = Delegate.Object
+  public typealias Cell = Delegate.Cell
   
   fileprivate let tableView: UITableView
   fileprivate let fetchedResultsController: NSFetchedResultsController<Object>
   fileprivate weak var delegate: Delegate!
   fileprivate let cellIdentifier: String
   
-  required init(tableView: UITableView, cellIdentifier: String, fetchedResultsController: NSFetchedResultsController<Object>, delegate: Delegate) {
+  public var count: Int {
+    return fetchedResultsController.fetchedObjects?.count ?? 0
+  }
+  
+  public init(tableView: UITableView,
+                cellIdentifier: String,
+                fetchedResultsController: NSFetchedResultsController<Object>,
+                delegate: Delegate) {
     self.tableView = tableView
     self.fetchedResultsController = fetchedResultsController
     self.cellIdentifier = cellIdentifier
@@ -49,16 +57,16 @@ class FRCTableViewDataSource<Delegate: FRCTableViewDataSourceDelegate>: NSObject
     tableView.reloadData()
   }
   
-  var selectedObject: Object? {
+  public var selectedObject: Object? {
     guard let indexPath = tableView.indexPathForSelectedRow else { return nil }
     return objectAtIndexPath(indexPath)
   }
   
-  func objectAtIndexPath(_ indexPath: IndexPath) -> Object {
+  public func objectAtIndexPath(_ indexPath: IndexPath) -> Object {
     return fetchedResultsController.object(at: indexPath)
   }
   
-  func reconfigureFetchRequest(_ configure: (NSFetchRequest<Object>) -> ()){
+  public func reconfigureFetchRequest(_ configure: (NSFetchRequest<Object>) -> ()){
     NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: fetchedResultsController.cacheName)
     configure(fetchedResultsController.fetchRequest)
     do {
@@ -71,12 +79,12 @@ class FRCTableViewDataSource<Delegate: FRCTableViewDataSourceDelegate>: NSObject
   
   // MARK: - UITableViewDataSource
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     guard let section = fetchedResultsController.sections?[section] else { return 0 }
     return section.numberOfObjects
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let object = fetchedResultsController.object(at: indexPath)
     guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? Cell else {
       fatalError("Unexpected cell type for indentifier \(cellIdentifier) at indexPath \(indexPath)")
@@ -87,11 +95,11 @@ class FRCTableViewDataSource<Delegate: FRCTableViewDataSourceDelegate>: NSObject
   
   // MARK: - NSFetchedResultsControllerDelegate
   
-  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+  public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     tableView.beginUpdates()
   }
   
-  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+  public func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                   didChange anObject: Any,
                   at indexPath: IndexPath?,
                   for type: NSFetchedResultsChangeType,
@@ -116,7 +124,8 @@ class FRCTableViewDataSource<Delegate: FRCTableViewDataSourceDelegate>: NSObject
     }
   }
   
-  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+  public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     tableView.endUpdates()
+    delegate.dataSourceDidChangeContent()
   }
 }

@@ -77,22 +77,11 @@ public extension Managed where Self: NSManagedObject {
   }
   
   static func findOrFetch(in context: NSManagedObjectContext, matching predicate: NSPredicate) -> Self? {
-    guard let object = materializedObject(in: context, matching: predicate) else {
-        return fetch(in: context) { request in
-            request.predicate = predicate
-            request.returnsObjectsAsFaults = false
-            request.fetchLimit = 1
-            }.first
-    }
-    return object
-  }
-  
-  static func materializedObject(in context: NSManagedObjectContext, matching predicate: NSPredicate) -> Self? {
-    for object in context.registeredObjects where !object.isFault {
-        guard type(of:object) == self, predicate.evaluate(with: object) else { continue }
-        return object as? Self
-    }
-    return nil
+    return fetch(in: context) { request in
+        request.predicate = predicate
+        request.returnsObjectsAsFaults = false
+        request.fetchLimit = 1
+        }.first
   }
   
   static func deleteAll(in context: NSManagedObjectContext) {
