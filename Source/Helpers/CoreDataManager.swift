@@ -49,6 +49,17 @@ open class CoreDataManager {
     return storeContainer.viewContext
   }
   
+  public func newChildContext(for context: NSManagedObjectContext? = nil) -> NSManagedObjectContext {
+    let childContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+    if let context = context {
+      childContext.parent = context
+    } else {
+      childContext.parent = viewContext
+    }
+    return childContext
+  }
+  
+  
   public func newBackgroundContext() -> NSManagedObjectContext {
     let context = storeContainer.newBackgroundContext()
     context.automaticallyMergesChangesFromParent = true
